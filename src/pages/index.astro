@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Categorias from "../components/Categorias.jsx";
+
 import axios from "axios";
 
 const responseProducts = await axios.get("http://localhost:1337/api/productos?populate[imagen][fields][0]=url")
@@ -8,7 +10,7 @@ const products = responseProducts.data.data
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
+	<header class="container">
 		<nav>
 			<ul class="mx-auto w-fit flex items-center gap-6 font-bold">
 				<li>
@@ -34,35 +36,27 @@ const products = responseProducts.data.data
 				</li>
 			</ul>
 		</nav>
-	</main>
-	<main>
-		<div>
-			<ul class="flex gap-4">
-				{
-					products.map(product => (
-						<li class="w-40 h-56 shadow-lg rounded-xl overflow-hidden">
-							<a href="" class="flex flex-col h-full">
-								<img src={"http://localhost:1337"+product.imagen.url} alt="" class="h-36 w-full rounded-xl object-cover">
-								<div class="flex justify-between px-2 flex-1 items-center text-sm ">
-									<p class="font-bold">{product.nombre}</p>
-									<span class="text-gray-600">${product.precio}</span>
-								</div>
-							</a>
-						</li>
-					))
-				}
-			</ul>
-		</div>
+	</header>
+	<section class="w-full bg-gray-200">
+		<Categorias client:load/>
+	</section>
+	<main class="container pt-5">
+				<ul class="flex flex-wrap gap-4 justify-center">
+					{
+						products.map(product => (
+							<li class="w-40 h-56 shadow-lg rounded-xl overflow-hidden hover:-translate-y-3 transition-all ">
+								<a href="" class="flex flex-col h-full">
+									<img src={"http://localhost:1337"+product.imagen.url} alt="" class="h-36 w-full rounded-xl object-cover">
+									<div class="flex justify-between px-2 flex-1 items-center text-sm ">
+										<p class="font-bold">{product.nombre}</p>
+										<span class="text-gray-600">${product.precio}</span>
+									</div>
+								</a>
+							</li>
+						))
+					}
+				</ul>
 	</main>
 </Layout>
 
-<style>
-	main {
-		margin: auto;
-		/* padding: 1rem; */
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: black;
-		line-height: 1.6;
-	}
-</style>
+
