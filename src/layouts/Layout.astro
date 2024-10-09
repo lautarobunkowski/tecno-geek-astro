@@ -4,6 +4,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+import Categorias from "../components/Categorias.jsx";
 ---
 
 <!doctype html>
@@ -17,13 +19,43 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<header class="nav bg-white">
+			<nav >
+				<ul class="mx-auto w-fit flex items-center gap-6 font-bold">
+					<li>
+						<a href="/">
+							Catalogo
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							Whatsapp
+						</a>
+					</li>
+					<img src="/tecno-geek-logo.jpg" alt="tecno-geek-logo" class="w-28">
+					<li>
+						<a href="#">
+							Novedades
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							Quien soy?
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<section class="w-full">
+			<Categorias client:visible/>
+		</section>
 		<slot />
 	</body>
 </html>
 <style is:global>
 	html {
 		font-family: system-ui, sans-serif;
-		background: white;
+		background: #ffffff;
 		color: black;
 	}
 
@@ -43,5 +75,9 @@ const { title } = Astro.props;
 		margin: auto;
 		width: 800px;
 		max-width: calc(100% - 2rem);
+	}
+
+	.nav{
+		box-shadow: 0 8px 10px 0 rgba(0, 0, 0, .04);
 	}
 </style>

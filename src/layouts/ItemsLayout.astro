@@ -1,0 +1,19 @@
+---
+import Filter from "../pages/categoria/Filter.jsx";
+import Order from "../pages/categoria/Order.jsx";
+---
+
+<div class="grid-items">
+    <Filter/>
+    <Order/>
+    <slot/>
+</div>
+
+<style>
+    .grid-items{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(150px, 1fr)); /* 150px mínimo, crecer hasta ocupar el espacio disponible */
+        grid-template-rows: repeat(2, minmax(50px, 1fr));
+        gap: 16px;
+    }
+</style>

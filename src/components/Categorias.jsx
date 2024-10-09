@@ -13,14 +13,16 @@ const Categorias = () => {
     
 
   return (
-    <ul class="container flex justify-center items-center gap-6 py-2">
+    <ul class="container flex justify-center items-center gap-6 pt-4">
         {
             categories.map(categorie => (
                 <li>
-                    <button class="fetchItemsCategorie flex flex-col gap-1 justify-center items-center font-semibold">
-                        <img src={"http://localhost:1337"+categorie.imagen.url} alt={categorie.nombre} class="w-8"/>
-                        <span class="text-sm">{categorie.nombre}</span>
-                    </button>
+                    <a href={`/categoria/${categorie.nombre}`}>
+                        <button class="fetchItemsCategorie flex flex-col gap-1 justify-center items-center font-semibold">
+                            <img src={"http://localhost:1337"+categorie.imagen.url} alt={categorie.nombre} class="w-6"/>
+                            <span class="text-[10px]">{categorie.nombre}</span>
+                        </button>
+                    </a>
                 </li>
             ))
         }

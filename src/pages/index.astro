@@ -1,7 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Categorias from "../components/Categorias.jsx";
-
 import axios from "axios";
 
 const responseProducts = await axios.get("http://localhost:1337/api/productos?populate[imagen][fields][0]=url")
@@ -9,37 +7,7 @@ const products = responseProducts.data.data
 
 ---
 
-<Layout title="Welcome to Astro.">
-	<header class="container">
-		<nav>
-			<ul class="mx-auto w-fit flex items-center gap-6 font-bold">
-				<li>
-					<a href="#">
-						Whatsapp
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						Catalogo
-					</a>
-				</li>
-				<img src="/tecno-geek-logo.jpg" alt="tecno-geek-logo" class="w-32">
-				<li>
-					<a href="#">
-						Novedades
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						Quien soy?
-					</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<section class="w-full bg-gray-200">
-		<Categorias client:load/>
-	</section>
+<Layout title="Catalogo">
 	<main class="container pt-5">
 				<ul class="flex flex-wrap gap-4 justify-center">
 					{

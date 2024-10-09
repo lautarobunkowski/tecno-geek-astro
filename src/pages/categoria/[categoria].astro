@@ -1,0 +1,16 @@
+---
+export const prerender = false;
+import Layout from '../../layouts/Layout.astro';
+import ItemsLayout from "../../layouts/ItemsLayout.astro";
+import Items from "./Items";
+
+const { categoria } = Astro.params;
+
+
+---
+
+<Layout title={categoria}>
+    <ItemsLayout>
+        <Items categorieName={categoria} client:visible></Items>
+    </ItemsLayout>
+</Layout>
